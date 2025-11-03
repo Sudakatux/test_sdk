@@ -1,0 +1,1 @@
+/// This is a json file {"name":"hello-world-worker","version":"1.0.0","description":"A Hello World example with Orkes Conductor","main":"index.js","author":"OrkesConductorCodeTeacher","license":"ISC","scripts":{"start":"node index.js"},"dependencies":{"@io-orkes/conductor-javascript":"^2.2.1"}}
