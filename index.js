@@ -1,28 +1,19 @@
-
-import { orkesConductorClient, WorkflowExecutor, simpleTask, workflow } from "@io-orkes/conductor-javascript";
-
-async function run() {
-  const client = await orkesConductorClient({
-    serverUrl: "https://developer.orkescloud.com/api",
-    keyId: "3b04974b5b9b-b902-11f0-b1f1-36f6dc66f9b7",
-    keySecret: "J5LHJlN0WnvahMnrGhJggsz0qeAfsOBUoGfEzNigD7BM0n6Q"
-  });
-
-  const executor = new WorkflowExecutor(client);
-
-  const myWorkflow = workflow("hello_world", [
-    simpleTask("greet_task", "greeting_task", { message: "Hello World!" })
-  ]);
-
-  await executor.registerWorkflow(true, myWorkflow);
-
-  const executionId = await executor.startWorkflow({
-    name: "hello_world",
-    version: 1,
-    input: { name: "Developer" }
-  });
-
-  console.log(`Workflow started with ID: `);
-}
-
-run().catch(error => console.error(error));
+aW1wb3J0IHsgb3JrZXNDb25kdWN0b3JDbGllbnQsIFdvcmtmbG93RXhlY3V0
+b3IsIHNpbXBsZVRhc2ssIHdvcmtmbG93IH0gZnJvbSAiQGlvLW9ya2VzL2Nv
+bmR1Y3Rvci1qYXZhc2NyaXB0IjsKCmFzeW5jIGZ1bmN0aW9uIHJ1bigpIHsK
+ICBjb25zdCBjbGllbnQgPSBhd2FpdCBvcmtlc0NvbmR1Y3RvckNsaWVudCh7
+CiAgICBzZXJ2ZXJVcmw6ICJodHRwczovL2RldmVsb3Blci5vcmtlc2Nsb3Vk
+LmNvbS9hcGkiLAogICAga2V5SWQ6ICIzYjA0OTc0YjViOWItYjkwMi0xMWYw
+LWIxZjEtMzZmNmRjNjZmOWI3IiwKICAgIGtleVNlY3JldDogIko1TEhKbE4w
+V252YWhNbnJHaEpnZ3N6MHFlQWZzT0JVb0dmRXpOaWdEN0JNMG42USIKICB9
+KTsKCiAgY29uc3QgZXhlY3V0b3IgPSBuZXcgV29ya2Zsb3dFeGVjdXRvcihj
+bGllbnQpOwoKICBjb25zdCBteVdvcmtmbG93ID0gd29ya2Zsb3coImhlbGxv
+X3dvcmxkIiwgWwogICAgc2ltcGxlVGFzaygiZ3JlZXRfdGFzayIsICJncmVl
+dGluZ190YXNrIiwgeyBtZXNzYWdlOiAiR29vZCBuaWdodCEiIH0pCiAgXSk7
+CgogIGF3YWl0IGV4ZWN1dG9yLnJlZ2lzdGVyV29ya2Zsb3codHJ1ZSwgbXlX
+b3JrZmxvdyk7CgogIGNvbnN0IGV4ZWN1dGlvbklkID0gYXdhaXQgZXhlY3V0
+b3Iuc3RhcnRXb3JrZmxvdyh7CiAgICBuYW1lOiAiaGVsbG9fd29ybGQiLAog
+ICAgdmVyc2lvbjogMSwKICAgIGlucHV0OiB7IG5hbWU6ICJEZXZlbG9wZXIi
+IH0KICB9KTsKCiAgY29uc29sZS5sb2coYFdvcmtmbG93IHN0YXJ0ZWQgd2l0
+aCBJRDogYCk7Cn0KCnJ1bigpLmNhdGNoKGVycm9yID0+IGNvbnNvbGUuZXJy
+b3IoZXJyb3IpKTsK
