@@ -1,1 +1,31 @@
-CmltcG9ydCB7IG9ya2VzQ29uZHVjdG9yQ2xpZW50LCBXb3JrZmxvd0V4ZWN1dG9yLCBzaW1wbGVUYXNrLCB3b3JrZmxvdyB9IGZyb20gIkBpby1vcmtlcy9jb25kdWN0b3ItamF2YXNjcmlwdCI7Cgphc3luYyBmdW5jdGlvbiBydW4oKSB7CiAgdHJ5IHsKICAgIGNvbnN0IGNsaWVudCA9IGF3YWl0IG9ya2VzQ29uZHVjdG9yQ2xpZW50KHsKICAgICAgc2VydmVyVXJsOiAiaHR0cHM6Ly9kZXZlbG9wZXIub3JrZXNjbG91ZC5jb20vYXBpIiwKICAgICAga2V5SWQ6ICIzYjA0OTc0YjViOWItYjkwMi0xMWYwLWIxZjEtMzZmNmRjNjZmOWI3IiwKICAgICAga2V5U2VjcmV0OiAiSjVMSEpsTjBXbnZhaE1uckdoSmdnc3owcWVBRnNPQlVvR2ZFek5pZ0Q3Qk0wbjZRIgogICAgfSk7CgogICAgY29uc3QgZXhlY3V0b3IgPSBuZXcgV29ya2Zsb3dFeGVjdXRvcihjbGllbnQpOwoKICAgIGNvbnN0IG15V29ya2Zsb3cgPSB3b3JrZmxvdygiaGVsbG9fd29ybGQiLCBbCiAgICAgIHNpbXBsZVRhc2soImdyZWV0X3Rhc2siLCAiZ3JlZXRpbmdfdGFzayIsIHsgbWVzc2FnZTogIkhpIFBhYmxvISIgfSkKICAgIF0pOwoKICAgIGF3YWl0IGV4ZWN1dG9yLnJlZ2lzdGVyV29ya2Zsb3codHJ1ZSwgbXlXb3JrZmxvdyk7CgogICAgY29uc3QgZXhlY3V0aW9uSWQgPSBhd2FpdCBleGVjdXRvci5zdGFydFdvcmtmbG93KHsKICAgICAgbmFtZTogImhlbGxvX3dvcmxkIiwKICAgICAgdmVyc2lvbjogMSwKICAgICAgaW5wdXQ6IHsgbmFtZTogIkRldmVsb3BlciIgfQogICAgfSk7CgogICAgY29uc29sZS5sb2coYFdvcmtsb3cgc3RhcnRlZCB3aXRoIElEOiBgICsgaWRleGVjdXRpb25JZCk7CiAgfSBjYXRjaCAoZXJyb3IpIHsKICAgIGNvbnNvbGUuZXJyb3IoZXJyb3IpOwogIH0KfQoKcnVuKCk7Cg==
+import { orkesConductorClient, WorkflowExecutor, simpleTask, workflow } from "@io-orkes/conductor-javascript";
+
+async function run() {
+  try {
+    const client = await orkesConductorClient({
+      serverUrl: "https://developer.orkescloud.com/api",
+      keyId: "3b04974b5b9b-b902-11f0-b1f1-36f6dc66f9b7",
+      keySecret: "J5LHJlN0WnvahMnrGhJggsz0qeAfsOBUoGfEzNigD7BM0n6Q"
+    });
+
+    const executor = new WorkflowExecutor(client);
+
+    const myWorkflow = workflow("hello_world", [
+      simpleTask("greet_task", "greeting_task", { message: "Hi Pablo!" })
+    ]);
+
+    await executor.registerWorkflow(true, myWorkflow);
+
+    const executionId = await executor.startWorkflow({
+      name: "hello_world",
+      version: 1,
+      input: { name: "Developer" }
+    });
+
+    console.log(`Workflow started with ID: `);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+run();
