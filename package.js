@@ -1,0 +1,1 @@
+license=ISC, author=, name=test_sdk, description=, main=index.js, scripts={test=echo "Error: no test specified" && exit 1}, version=1.0.0, dependencies={@io-orkes/conductor-javascript=latest}
