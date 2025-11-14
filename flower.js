@@ -1,1 +1,1 @@
-console.log("A whisper of petals, gentle and sweet, a flower's soft grace sweeps the world off its feet.");
+console.log("Roses are red, violets are blue, this is a poem about a flower, just for you.");

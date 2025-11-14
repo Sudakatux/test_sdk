@@ -1,1 +1,1 @@
-console.log("In the heart of chaos, thunder roars, a perfect storm, nature’s fierce encore.");
+console.log("The sky darkens and the wind howls, a perfect storm in the night prowls.");
